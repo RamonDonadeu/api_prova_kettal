@@ -1,8 +1,15 @@
+const bodyParser = require("body-parser");
+const { json } = require("express");
 const express = require("express");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000
+const PORT = 3000
+
+app.use(bodyParser.json());
+
+const cochesRouter = require('./routes/cocheRoutes')
+app.use('/api/coches', cochesRouter)
 
 //Testing
 app.get('/', (req,res) => {

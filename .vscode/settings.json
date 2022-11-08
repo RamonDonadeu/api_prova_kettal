@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "db.wfnbrusciikjtbgvlpro.supabase.co",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "KettalProva",
+            "password": "ProvaKettal",
+            "username": "postgres",
+            "database": "postgres"
+        }
+    ]
+}
