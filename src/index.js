@@ -1,11 +1,13 @@
 const bodyParser = require("body-parser");
 const { json } = require("express");
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 8080;
 
+app.use(cors({ credentials: true, origin: true }));
 app.use(bodyParser.json());
 
 const cochesRouter = require("./routes/cocheRoutes");
