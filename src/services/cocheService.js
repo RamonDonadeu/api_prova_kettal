@@ -1,47 +1,48 @@
 const Coche = require("../database/Coche");
 
-const getAllCoches = () => {
+const getAllCoches = async () => {
   try {
-    const allCoches = Coche.getAllCoche();
-    return allCoche;
+    const allCoches = await Coche.getAllCoches();
+    console.log(allCoches)
+    return allCoches;
   } catch (error) {
     throw error;
   }
 };
 
-const getOneCoche = (cocheId) => {
+const getOneCoche = async (cocheId) => {
   try {
-    const coche = Coche.getOneCoche(cocheId);
+    const coche = await Coche.getOneCoche(cocheId);
     return coche;
   } catch (error) {
     throw error;
   }
 };
 
-const createNewCoche = (newCoche) => {
+const createNewCoche = async (newCoche) => {
   const cocheToInsert = {
     ...newCoche,
   };
   try {
-    const createdCoche = Coche.createNewCoche(cocheToInsert);
+    const createdCoche = await Coche.createNewCoche(cocheToInsert);
     return createdCoche;
   } catch (error) {
     throw error;
   }
 };
 
-const updateOneCoche = (cocheId, changes) => {
+const updateOneCoche = async (cocheId, changes) => {
   try {
-    const updatedCoche = Coche.updateOneCoche(cocheId, changes);
+    const updatedCoche = await Coche.updateOneCoche(cocheId, changes);
     return updatedCoche;
   } catch (error) {
     throw error;
   }
 };
 
-const deleteOneCoche = (cocheId) => {
+const deleteOneCoche = async (cocheId) => {
   try {
-    Coche.deleteOneCoche(cocheId);
+    await Coche.deleteOneCoche(cocheId);
   } catch (error) {
     throw error;
   }
@@ -49,8 +50,8 @@ const deleteOneCoche = (cocheId) => {
 
 module.exports = {
   getAllCoches,
-  getOneCochet,
-  createNewCochet,
-  updateOneCochet,
-  deleteOneCochet,
+  getOneCoche,
+  createNewCoche,
+  updateOneCoche,
+  deleteOneCoche,
 };

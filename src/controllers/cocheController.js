@@ -1,8 +1,8 @@
 const cocheService = require("../services/cocheService");
 
-const getAllCoches = (req, res) => {
+const getAllCoches = async (req, res) => {
   try {
-    const allCoches = cocheService.getAllCoches();
+    const allCoches = await cocheService.getAllCoches();
     res.send({ status: "OK", data: allCoches });
   } catch (error) {
     res
@@ -11,7 +11,7 @@ const getAllCoches = (req, res) => {
   }
 };
 
-const getOneCoche = (req, res) => {
+const getOneCoche = async (req, res) => {
   const {
     params: { cocheId },
   } = req;
@@ -22,7 +22,7 @@ const getOneCoche = (req, res) => {
     });
   }
   try {
-    const coche = cocheService.getOneCoche(cocheId);
+    const coche = await cocheService.getOneCoche(cocheId);
     res.send({ status: "OK", data: coche });
   } catch (error) {
     res
@@ -31,8 +31,9 @@ const getOneCoche = (req, res) => {
   }
 };
 
-const createOneCoche = (req, res) => {
+const createOneCoche = async (req, res) => {
   const { body } = req;
+  console.log(body)
   if (
     !body.marca ||
     !body.modelo ||
@@ -51,6 +52,7 @@ const createOneCoche = (req, res) => {
     });
     return;
   }
+  
   const newCoche = {
     marca: body.marca,
     modelo: body.modelo,
@@ -61,7 +63,7 @@ const createOneCoche = (req, res) => {
     fechaCreacion: body.fechaCreacion,
   };
   try {
-    const createdCoche = cocheService.createNewCoche(newCoche);
+    const createdCoche = await cocheService.createNewCoche(newCoche);
     res.status(201).send({ status: "OK", data: createdCoche });
   } catch (error) {
     res
@@ -70,7 +72,7 @@ const createOneCoche = (req, res) => {
   }
 };
 
-const updateOneCoche = (req, res) => {
+const updateOneCoche = async (req, res) => {
   const {
     body,
     params: { cocheId },
@@ -82,7 +84,7 @@ const updateOneCoche = (req, res) => {
     });
   }
   try {
-    const updatedCoche = cocheService.updateOneCoche(cocheId, body);
+    const updatedCoche = await cocheService.updateOneCoche(cocheId, body);
     res.send({ status: "OK", data: updatedCoche });
   } catch (error) {
     res
@@ -91,7 +93,7 @@ const updateOneCoche = (req, res) => {
   }
 };
 
-const deleteOneCoche = (req, res) => {
+const deleteOneCoche = async (req, res) => {
   const {
     params: { cocheId },
   } = req;
@@ -102,7 +104,7 @@ const deleteOneCoche = (req, res) => {
     });
   }
   try {
-    cocheService.deleteOneCoche(cocheId);
+    await cocheService.deleteOneCoche(cocheId);
     res.status(204).send({ status: "OK" });
   } catch (error) {
     res
