@@ -14,7 +14,6 @@ const getOneCoche = async (cocheId) => {
     const coche = await pool.query(
       "SELECT * FROM coches where id = " +cocheId
     );
-    console.log(coche.rowCount)
     if (coche.rows.length == 0) {
       throw {
         status: 400,
@@ -28,7 +27,6 @@ const getOneCoche = async (cocheId) => {
 };
 
 const createNewCoche = async (newCoche) => {
-  console.log(newCoche)
   try {
      newCoche = await pool.query(
       `INSERT INTO coches (marca,modelo,color,disponible,cantidad,precio,fechaCreacion) 
