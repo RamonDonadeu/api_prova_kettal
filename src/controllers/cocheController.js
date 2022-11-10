@@ -33,12 +33,12 @@ const getOneCoche = async (req, res) => {
 
 const createOneCoche = async (req, res) => {
   const { body } = req;
-  console.log(body)
+  console.log(body);
   if (
     !body.marca ||
     !body.modelo ||
     !body.color ||
-    !body.disponible ||
+    body.disponible == null ||
     !body.cantidad ||
     !body.precio ||
     !body.fechaCreacion
@@ -52,7 +52,7 @@ const createOneCoche = async (req, res) => {
     });
     return;
   }
-  
+
   const newCoche = {
     marca: body.marca,
     modelo: body.modelo,

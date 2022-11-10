@@ -12,7 +12,7 @@ const getAllCoches = async () => {
 const getOneCoche = async (cocheId) => {
   try {
     const coche = await pool.query(
-      "SELECT * FROM coches where id = " +cocheId
+      "SELECT * FROM coches where id = " + cocheId
     );
     if (coche.rows.length == 0) {
       throw {
@@ -28,7 +28,7 @@ const getOneCoche = async (cocheId) => {
 
 const createNewCoche = async (newCoche) => {
   try {
-     newCoche = await pool.query(
+    newCoche = await pool.query(
       `INSERT INTO coches (marca,modelo,color,disponible,cantidad,precio,fechaCreacion) 
       VALUES (
         '${newCoche.marca}',
@@ -38,8 +38,9 @@ const createNewCoche = async (newCoche) => {
         '${newCoche.cantidad}',
         '${newCoche.precio}',
         '${newCoche.fechaCreacion}'
-        )`);
-    return newCoche.status
+        )`
+    );
+    return newCoche.status;
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error };
   }
@@ -48,16 +49,17 @@ const createNewCoche = async (newCoche) => {
 const updateOneCoche = async (CocheId, changes) => {
   try {
     changes = await pool.query(
-    `UPDATE coches SET 
+      `UPDATE coches SET 
       marca         = '${changes.marca}',
       modelo        = '${changes.modelo}',
       color         = '${changes.color}',
       disponible    = '${changes.disponible}',
       cantidad      = '${changes.cantidad}',
       precio        = '${changes.precio}',
-      fechaCreacion = '${changes.fechaCreacion}'
-    WHERE id = ${CocheId}`);
-  return changes.status
+      fechaCreacion = '${changes.fechacreacion}'
+    WHERE id = ${CocheId}`
+    );
+    return changes.status;
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error };
   }
@@ -65,7 +67,7 @@ const updateOneCoche = async (CocheId, changes) => {
 
 const deleteOneCoche = async (cocheId) => {
   try {
-    await pool.query('DELETE FROM coches WHERE id = '+cocheId)
+    await pool.query("DELETE FROM coches WHERE id = " + cocheId);
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message || error };
   }
