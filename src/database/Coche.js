@@ -14,6 +14,7 @@ const getOneCoche = async (cocheId) => {
     const coche = await pool.query(
       "SELECT * FROM coches where id = " + cocheId
     );
+    console.log(new Date(coche.rows[0].fechacreacion.setDate(coche.rows[0].fechacreacion.getDate()+1)).toISOString())
     if (coche.rows.length == 0) {
       throw {
         status: 400,
@@ -47,7 +48,7 @@ const createNewCoche = async (newCoche) => {
 };
 
 const updateOneCoche = async (CocheId, changes) => {
-  console.log(changes.fechacreacion)
+  console.log(changes.fechacreacion.split('T')[0])
   try {
     changes = await pool.query(
       `UPDATE coches SET 

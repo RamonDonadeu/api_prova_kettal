@@ -76,7 +76,6 @@ const updateOneCoche = async (req, res) => {
     body,
     params: { cocheId },
   } = req;
-  console.log(body)
   if (!cocheId) {
     res.status(400).send({
       status: "FAILED",
