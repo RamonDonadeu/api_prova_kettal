@@ -2,7 +2,7 @@ const pool = require("../config/postgres");
 
 const getAllCoches = async () => {
   try {
-    const allCoches = await pool.query("SELECT * FROM coches");
+    const allCoches = await pool.query("SELECT * FROM coches ORDER BY id");
     return allCoches.rows;
   } catch (error) {
     throw { status: 500, message: error };
@@ -47,6 +47,7 @@ const createNewCoche = async (newCoche) => {
 };
 
 const updateOneCoche = async (CocheId, changes) => {
+  console.log(changes.fechacreacion)
   try {
     changes = await pool.query(
       `UPDATE coches SET 

@@ -3,7 +3,6 @@ const Coche = require("../database/Coche");
 const getAllCoches = async () => {
   try {
     const allCoches = await Coche.getAllCoches();
-    console.log(allCoches)
     return allCoches;
   } catch (error) {
     throw error;
