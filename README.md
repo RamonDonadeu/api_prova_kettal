@@ -1,4 +1,4 @@
-# Kettal Exercice
+# Kettal Backend Exercise
 
 API para la prueba tecnica de Kettal
 
@@ -9,7 +9,7 @@ Este proyecto usa:
 
 - NodeJS
 - Express
-- Postgres
+- Postgres, Alojado en Supabase
 
 ## Setup
 
